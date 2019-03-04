@@ -14,8 +14,7 @@ class ElementFrequencyMap {
         for (Integer i : integers)
             elementFrequencyMap.put(i, Collections.frequency(integers, i));
 
-        Set<Map.Entry<Integer, Integer>> set = elementFrequencyMap.entrySet();
-        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(set);
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(elementFrequencyMap.entrySet());
 
         Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
             public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
