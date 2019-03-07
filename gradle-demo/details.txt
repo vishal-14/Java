@@ -1,0 +1,95 @@
+# gradle-assignment
+
+1)
+```
+java plugin documentation: ​ https://docs.gradle.org/current/userguide/java_plugin.html
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src/main/java']
+		     }
+	test {
+		java {
+			srcDirs = ['src/test/java']
+		}
+	}
+  }
+
+jar {
+      manifest {
+          attributes(
+  
+                  'Main-Class': 'Hello'
+  
+          )
+      }
+ }
+```
+
+
+2)
+```
+IDEA plugin documentation; ​ https://docs.gradle.org/current/userguide/idea_plugin.html
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', 'src/main/java2']
+        }
+        
+    }
+}
+```
+
+
+3) 
+```
+sourceSets {
+    main {
+        resources{
+            srcDirs = ['src/main/resources']
+            exclude 'file1.txt'
+        }
+    }
+}
+```
+
+4)
+```
+
+Fat/uber jar: ​ https://www.baeldung.com/gradle-fat-jar
+An uber-JAR—also known as a fat JAR or JAR with dependencies—is a JAR file that contains not only a Java program, but embeds its dependencies as well. This means that the JAR functions as an "all-in-one" distribution of the software, without needing any other Java code.
+Creating an uber-JAR is profitable for us as then we will not need any other file to run our project.
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.commons:commons-lang3:3.8.1'
+}
+
+jar{
+    from configurations.compile.collect{ zipTree it }
+}
+
+```
+
+
+
+
+5)
+```
+repositories {
+    	mavenCentral()
+	jcenter()
+	maven { url "https://repo.maven.apache.org/maven2" }
+}
+
+```
+
+6)
+```
+Apply from : ‘myTask.gradle’
+```

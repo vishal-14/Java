@@ -1,0 +1,56 @@
+
+
+apply plugin : 'java'
+apply plugin: 'idea'
+//Creating jar file Question 1
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'Hello'
+        )
+    }
+}
+
+
+// adding sources directory Question 2
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', 'src/main/java2']
+        }
+
+        // Excluding file1.txt from jar  Question 3
+        resources{
+            srcDirs = ['src/main/resources']
+            exclude 'file1.txt'
+        }
+    }
+
+
+}
+
+
+
+//Question 4
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.commons:commons-lang3:3.8.1'
+}
+
+jar{
+    from configurations.compile.collect{ zipTree it }
+}
+
+// Question 5
+
+repositories {
+    jcenter()
+}
+
+//Question 6
+
+apply from : 'myTask.gradle'
